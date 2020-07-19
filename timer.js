@@ -6,7 +6,14 @@ export default class Timer extends Component {
     constructor() {
         super()
         this.state = {
-            counter: 0,
+            m0: 5,
+            m1: 2,
+            s0: 0,
+            s1: 0,
+            M0: 5,
+            M1: 0,
+            S0: 0,
+            S1: 0,
         }
     }
 
@@ -15,17 +22,27 @@ export default class Timer extends Component {
         <View style={styles.center}>
             <Text style={{ marginTop: 20, fontWeight: 'bold', }}> Set Working Time </Text>
             <View style={styles.inputContainer}>
+
                 <Text>Min: </Text>
-                <TextInput style={styles.input} value={'00'} keyboardType='number-pad' />
+                {/* state of the work timer minutes */}
+                <TextInput style={styles.input} value={`${this.state.m1}${this.state.m0}`} keyboardType='number-pad' />
+
                 <Text style={{ marginLeft: 50 }}> Sec: </Text>
-                <TextInput style={styles.input} value={'00'} keyboardType='number-pad'/>
+                {/* state of the work timer minutes */}
+                <TextInput style={styles.input} value={`${this.state.s1}${this.state.s0}`} keyboardType='number-pad'/>
+
             </View>
             <Text style={{ marginTop: 20, fontWeight: 'bold', }}>Set Rest Time</Text>
             <View style={styles.inputContainer}>
+
                 <Text>Min: </Text>
-                <TextInput style={styles.input} value={'00'} keyboardType='number-pad' />
+                {/* state of the rest timer minutes */}
+                <TextInput style={styles.input} value={`${this.state.M1}${this.state.M0}`} keyboardType='number-pad' />
+
+                {/* state of rest timer seconds */}
                 <Text style={{ marginLeft: 50 }}> Sec: </Text>
-                <TextInput style={styles.input} value={'00'} keyboardType='number-pad' />
+                <TextInput style={styles.input} value={`${this.state.S1}${this.state.S0}`} keyboardType='number-pad' />
+
             </View>
         </View>
         )
