@@ -1,0 +1,9 @@
+node_modules/**/*
+.expo/*
+npm-debug.*
+
+*.swp
+*.swo
+.*.sw*
+*~
+
