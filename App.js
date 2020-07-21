@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, StatusBar } from 'react-native';
 
 // importing components from other files
 import Timer from './timer.js'
@@ -8,6 +8,7 @@ export default class App extends React.Component {
   render() {
       return (
         <View style={styles.container}>
+            <StatusBar backgroundColor='blue' barType='dark-content' visible/>
             <Text style={[styles.text, styles.boxShadow]}>Work Timer</Text>
             <Timer/>
         </View>

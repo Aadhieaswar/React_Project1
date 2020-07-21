@@ -1,71 +1,76 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Button } from 'react-native'
+
+// importing the timer part from another file
+import Part from './part.js'
 
 export default class Timer extends Component {
 
     constructor() {
         super()
         this.state = {
-            m0: 5,
-            m1: 2,
-            s0: 0,
-            s1: 0,
-            M0: 5,
-            M1: 0,
-            S0: 0,
-            S1: 0,
+            mW: 25,
+            sW: 0,
+            mR: 5,
+            sR: 0,
+            workTime: false,
+            timer: '25:00',
         }
+    }
+
+    formatNumber(num) {
+        var str = String(num)
+        if (str.length === 1) {
+            str = '0' + str
+        }
+        return str
+    }
+
+    runTimer = () => {
+        if (this.state.sW === 0) {
+            this.setState(pre => ({mW: pre.mW - 1, sW: 59 }))
+        } else if (this.state.sW >= 0) {
+            this.setState(pre => ({sW: pre.sW - 1}))
+        }
+        this.setState({timer: this.formatNumber(this.state.mW) + ':' + this.formatNumber(this.state.sW)})
+    }
+
+    componentDidMount() {
+        this.clock = setInterval(this.runTimer, 1000)
     }
 
     render() {
         return(
         <View style={styles.center}>
-            <Text style={{ marginTop: 20, fontWeight: 'bold', }}> Set Working Time </Text>
-            <View style={styles.inputContainer}>
-
-                <Text>Min: </Text>
-                {/* state of the work timer minutes */}
-                <TextInput style={styles.input} value={`${this.state.m1}${this.state.m0}`} keyboardType='number-pad' />
-
-                <Text style={{ marginLeft: 50 }}> Sec: </Text>
-                {/* state of the work timer minutes */}
-                <TextInput style={styles.input} value={`${this.state.s1}${this.state.s0}`} keyboardType='number-pad'/>
-
+            <Text style={styles.timer}>{this.state.timer}</Text>
+            <View style={styles.btnContainer}>
+                <Button title='Start' color='darkgreen' />
+                <Button title='Reset' color='red' />
             </View>
-            <Text style={{ marginTop: 20, fontWeight: 'bold', }}>Set Rest Time</Text>
-            <View style={styles.inputContainer}>
 
-                <Text>Min: </Text>
-                {/* state of the rest timer minutes */}
-                <TextInput style={styles.input} value={`${this.state.M1}${this.state.M0}`} keyboardType='number-pad' />
+            {/* Work timer inputs */}
+            <Part title='Set Working Time' m={this.state.mW} s={this.state.sW} />
 
-                {/* state of rest timer seconds */}
-                <Text style={{ marginLeft: 50 }}> Sec: </Text>
-                <TextInput style={styles.input} value={`${this.state.S1}${this.state.S0}`} keyboardType='number-pad' />
-
-            </View>
+            {/* Rest timer inputs */}
+            <Part title='Set Rest Time' m={this.state.mR} s={this.state.sR} />
         </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    input: {
-        borderWidth: 1,
-        borderColor: '#1d2124',
-        height: 25,
-        width: 50,
-        textAlign: 'center',
-    },
-    inputContainer: {
-        marginTop: 10,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     center: {
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-    }
+    },
+    timer: {
+        fontSize: 50,
+        alignItems: 'center',
+        padding: 20,
+    },
+    btnContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
 })
