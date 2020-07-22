@@ -13,8 +13,9 @@ export default class Timer extends Component {
             sW: 0,
             mR: 5,
             sR: 0,
-            workTime: false,
+            workTime: true,
             timer: '25:00',
+            condition: 'Start',
         }
     }
 
@@ -35,8 +36,15 @@ export default class Timer extends Component {
         this.setState({timer: this.formatNumber(this.state.mW) + ':' + this.formatNumber(this.state.sW)})
     }
 
-    componentDidMount() {
-        this.clock = setInterval(this.runTimer, 1000)
+    controlTimer = () => {
+        clearInterval(this.clock)
+        if (this.state.condition === 'Start') {
+            this.setState({condition: 'Pause'})
+            this.clock = setInterval(this.runTimer, 1000)
+        } else {
+            this.setState({condition: 'Start'})
+            clearInterval(this.clock)
+        }
     }
 
     render() {
@@ -44,7 +52,7 @@ export default class Timer extends Component {
         <View style={styles.center}>
             <Text style={styles.timer}>{this.state.timer}</Text>
             <View style={styles.btnContainer}>
-                <Button title='Start' color='darkgreen' />
+                <Button title={this.state.condition} color='darkgreen' onPress={this.controlTimer} />
                 <Button title='Reset' color='red' />
             </View>
 
