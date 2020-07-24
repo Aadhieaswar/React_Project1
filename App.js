@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, StatusBar } from 'react-native';
+import { StyleSheet, Text, ScrollView, StatusBar } from 'react-native';
 
 // importing components from other files
 import Timer from './timer.js'
@@ -7,25 +7,28 @@ import Timer from './timer.js'
 export default class App extends React.Component {
   render() {
       return (
-        <View style={styles.container}>
-            <StatusBar backgroundColor='blue' barType='dark-content' visible/>
+        <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps='handled'>
+            <StatusBar barStyle='dark-content' />
             <Text style={[styles.text, styles.boxShadow]}>Work Timer</Text>
             <Timer/>
-        </View>
+        </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+      flexGrow: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#f1f1f1',
+    },
     text: {
         fontSize: 50,
+        justifyContent: 'center',
+        textAlign: 'center',
         color: '#1d2124',
+        width: 300,
         borderWidth: 2,
         borderColor: '#1d2124',
         padding: 10,

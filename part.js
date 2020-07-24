@@ -11,11 +11,11 @@ export default class Part extends Component {
         return(
             <View style={styles.center}>
                 <Text style={{ marginTop: 20, fontWeight: 'bold', }}>{ this.props.title }</Text>
-                    <View style={styles.inputContainer}>
+                <View style={styles.inputContainer}>
 
                     <Text>Min: </Text>
                     {/* props of the work timer minutes */}
-                    <TextInput style={styles.input} maxLength={2} defaultValue={`${ this.props.m }`} keyboardType='number-pad' onChange={ this.props.onchnageM } />
+                    <TextInput style={styles.input} maxLength={2} defaultValue={`${ this.props.m }`} keyboardType='number-pad' onChange={ this.props.onChangeM } />
 
                     <Text style={{ marginLeft: 50 }}> Sec: </Text>
                     {/* props of the work timer minutes */}
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
         height: 25,
         width: 50,
         textAlign: 'center',
+        backgroundColor: 'white',
     },
     inputContainer: {
         marginTop: 10,

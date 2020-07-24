@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "react_project1",
-    "description": "This project is really great.",
-    "slug": "project1",
+    "description": "Pomodoro Timer With Custom Timers",
+    "slug": "react_project1",
     "privacy": "public",
     "platforms": [
       "ios",
@@ -13,7 +13,7 @@
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "ios": {
