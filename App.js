@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView, StatusBar } from 'react-native';
 
 // importing components from other files
 import Timer from './timer.js'
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
       return (
         <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps='handled'>
