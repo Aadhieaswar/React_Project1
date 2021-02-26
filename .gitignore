@@ -1,7 +1,12 @@
+# npm
 node_modules/**/*
 .expo/*
 npm-debug.*
 
+# build files
+*[Bb]uild/**
+
+# vim
 *.swp
 *.swo
 .*.sw*
